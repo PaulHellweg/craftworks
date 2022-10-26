@@ -11,7 +11,7 @@ export class TaskTileComponent implements OnInit {
   public randomTasks: Task[] = []
   constructor(private taskService: TaskService) {}
 
-  //TODO: display random tasks in task-tile.component.html properly (use *ngFor)
+  //TODO: display random tasks in app.component.html properly (use *ngFor)
 
   public ngOnInit(): void {
     setInterval(() => {
