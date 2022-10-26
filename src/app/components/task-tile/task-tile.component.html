@@ -1,0 +1,6 @@
+<div [ngStyle]="{'background-color': task.color  }" class="tile-container" *ngFor="let task of randomTasks">
+    <h1>{{ task.title.toUpperCase() }}</h1>
+    <p>Description: {{ task.description }}</p>
+    <p>Due To: {{ task.dueDate }}</p>
+    <p>Priority: {{ task.priority }}</p>
+</div>
