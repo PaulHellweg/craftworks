@@ -6,7 +6,7 @@ import * as uuid from 'uuid'
   providedIn: 'root',
 })
 export class TaskService {
-  public task: Subject<Task> = new Subject()
+  public task: Subject<RandomTask> = new Subject()
 
   lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -19,16 +19,28 @@ export class TaskService {
     },
   })
 
+  //set existing tasks to localStorage
+  setExistingTasks(): void {
+    JSON.parse(localStorage.getItem('randomTasks') || '[]').forEach(
+      (i: RandomTask) => this.task.next(i)
+    )
+  }
+
   //add random task to localStorage
-  addRandomTasks(): void {
-    const randomTask: Task = {
+  addRandomTasks(count: number): void {
+    const randomTask: RandomTask = {
       title: this.lorem.generateWords(1),
       description: this.lorem.generateSentences(1),
-      priority: 1,
+      priority: (count % 3) + 1,
       dueDate: this.getRandomDate(),
       color: '#' + Math.floor(Math.random() * 16777215).toString(16),
       id: uuid.v4(),
     }
+    let tasklist = JSON.parse(localStorage.getItem('tasklist') || '[]')
+    tasklist.push(randomTask.id)
+    localStorage.setItem('tasklist', JSON.stringify(tasklist))
+    localStorage.setItem(randomTask.id, JSON.stringify(randomTask))
+    console.log(localStorage)
     this.task.next(randomTask)
   }
 
@@ -42,11 +54,11 @@ export class TaskService {
   }
 }
 
-export interface Task {
+export interface RandomTask {
   id: string
   dueDate: Date
   title: string
   description: string
-  priority: 1 | 2 | 3
+  priority: number // 1-3
   color: string
 }
