@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { TaskService } from '../../services/task.service'
-import { Task } from '../../services/task.service'
+import { Component, Input, OnInit } from '@angular/core'
+import { RandomTask } from '../../services/task.service'
 
 @Component({
   selector: 'app-task-tile',
@@ -8,15 +7,10 @@ import { Task } from '../../services/task.service'
   styleUrls: ['./task-tile.component.scss'],
 })
 export class TaskTileComponent implements OnInit {
-  public randomTasks: Task[] = []
-  constructor(private taskService: TaskService) {}
+  @Input()
+  public randomTask: RandomTask | undefined
 
-  //TODO: display random tasks in app.component.html properly (use *ngFor)
+  constructor() {}
 
-  public ngOnInit(): void {
-    setInterval(() => {
-      this.taskService.addRandomTasks()
-    }, Math.floor(Math.random() * 400) * 1000)
-    this.taskService.task.subscribe((task) => this.randomTasks.push(task))
-  }
+  public ngOnInit(): void {}
 }

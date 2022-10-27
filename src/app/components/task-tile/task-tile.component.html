@@ -1,8 +1,6 @@
-//TODO: ng for needs to move to app.component.html and be passed an array of objects to render
-
-<div [ngStyle]="{'background-color': task.color  }" class="tile-container" *ngFor="let task of randomTasks">
-    <h1>{{ task.title.toUpperCase() }}</h1>
-    <p>Description: {{ task.description }}</p>
-    <p>Due To: {{ task.dueDate }}</p>
-    <p>Priority: {{ task.priority }}</p>
+<div [ngStyle]="{'background-color': randomTask?.color  }" class="tile-container" >
+    <h1>{{ randomTask?.title?.toUpperCase() }}</h1>
+    <p>{{ randomTask?.description }}</p>
+    <p>Due To: {{ randomTask?.dueDate }}</p>
+    <p>Priority: {{ randomTask?.priority }}</p>
 </div>
