@@ -31,4 +31,11 @@ export class EditDialogComponent implements OnInit {
   updateData(id: string) {
     localStorage.setItem(id, JSON.stringify(this.data))
   }
+
+  changeDescription(description: string) {
+    this.data.description = description
+  }
+  changeTitle(title: string) {
+    this.data.title = title
+  }
 }

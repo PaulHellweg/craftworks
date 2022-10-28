@@ -1,15 +1,13 @@
 <div class="dialog-container">
+  <mat-form-field appearance="fill" class="edit-text">
+    <mat-label>{{ data.title }}</mat-label>
+    <input matInput [(ngModel)]="data.title" />
+  </mat-form-field>
   <div class="edit-text">
-    <div>Title:</div>
-    <input matInput [placeholder]="data.title" (input)="(data.title)" />
-  </div>
-  <div class="edit-text">
-    <div>Description:</div>
-    <input
-      matInput
-      [placeholder]="data.description"
-      (input)="(data.description)"
-    />
+    <mat-form-field appearance="fill" class="edit-text">
+      <mat-label>{{ data.description }}</mat-label>
+      <input matInput [(ngModel)]="data.description" />
+    </mat-form-field>
   </div>
   <div class="section">
     <mat-form-field appearance="fill">
@@ -17,6 +15,7 @@
         <mat-option
           *ngFor="let item of priorityOptiones"
           [value]="data.priority"
+          (onSelectionChange)="data.priority = item.value"
         >
           {{ item.viewValue }}
         </mat-option>

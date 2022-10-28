@@ -15,6 +15,8 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatCardModule } from '@angular/material/card'
 import { DatePipe } from '@angular/common'
 import { MatSelectModule } from '@angular/material/select'
+import { MatInputModule } from '@angular/material/input'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select'
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
@@ -36,6 +39,7 @@ import { MatSelectModule } from '@angular/material/select'
     MatCardModule,
     DatePipe,
     MatSelectModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
