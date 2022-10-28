@@ -1,6 +1,13 @@
-<div [ngStyle]="{'background-color': randomTask?.color  }" class="tile-container" >
+<div [ngStyle]="{ 'border-color': randomTask?.color }" class="tile-container">
+  <div class="content-container">
     <h1>{{ randomTask?.title?.toUpperCase() }}</h1>
-    <p>{{ randomTask?.description }}</p>
-    <p>Due To: {{ randomTask?.dueDate }}</p>
+    <button mat-mini-fab color="primary" (click)="openDialog()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <p>{{ randomTask?.description }}</p>
+  <div class="content-container">
+    <p>Due To: {{ randomTask?.dueDate | date }}</p>
     <p>Priority: {{ randomTask?.priority }}</p>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
 import { RandomTask, TaskService } from '../../services/task.service'
 
 @Component({
@@ -7,9 +8,9 @@ import { RandomTask, TaskService } from '../../services/task.service'
   styleUrls: ['./app-view.component.scss'],
 })
 export class AppViewComponent implements OnInit {
-  constructor(private taskService: TaskService) {}
+  public randomTasks: RandomTask[] = []
 
-  randomTasks: RandomTask[] = []
+  constructor(private taskService: TaskService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     const tasklist = JSON.parse(localStorage.getItem('tasklist') || '[]')
@@ -28,6 +29,6 @@ export class AppViewComponent implements OnInit {
     this.taskService.addRandomTasks(count)
     setTimeout(() => {
       this.addRandomTasks(++count)
-    }, Math.floor(Math.random() * 5000) + 1000)
+    }, Math.floor(Math.random() * 20000) + 7000)
   }
 }

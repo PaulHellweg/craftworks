@@ -1,0 +1,44 @@
+<div class="dialog-container">
+  <div class="edit-text">
+    <div>Title:</div>
+    <input matInput [placeholder]="data.title" (input)="(data.title)" />
+  </div>
+  <div class="edit-text">
+    <div>Description:</div>
+    <input
+      matInput
+      [placeholder]="data.description"
+      (input)="(data.description)"
+    />
+  </div>
+  <div class="section">
+    <mat-form-field appearance="fill">
+      <mat-select [placeholder]="data.priority.toString()">
+        <mat-option
+          *ngFor="let item of priorityOptiones"
+          [value]="data.priority"
+        >
+          {{ item.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-card class="calender">
+      <mat-calendar
+        [minDate]="taskService.startDate"
+        [maxDate]="taskService.endDate"
+        [(selected)]="data.dueDate"
+      ></mat-calendar>
+    </mat-card>
+  </div>
+  <div mat-dialog-actions class="action-section">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button
+      mat-button
+      [mat-dialog-close]="data"
+      cdkFocusInitial
+      (click)="updateData(data.id)"
+    >
+      Save
+    </button>
+  </div>
+</div>

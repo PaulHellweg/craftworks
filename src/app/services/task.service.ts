@@ -8,6 +8,9 @@ import * as uuid from 'uuid'
 export class TaskService {
   public task: Subject<RandomTask> = new Subject()
 
+  public startDate: Date = new Date(2023, 6, 1)
+  public endDate: Date = new Date(2024, 7, 1)
+
   lorem = new LoremIpsum({
     sentencesPerParagraph: {
       max: 8,
@@ -26,13 +29,13 @@ export class TaskService {
     )
   }
 
-  //add random task to localStorage
+  //add random task with described criteria to localStorage and to task subject
   addRandomTasks(count: number): void {
     const randomTask: RandomTask = {
       title: this.lorem.generateWords(1),
       description: this.lorem.generateSentences(1),
       priority: (count % 3) + 1,
-      dueDate: this.getRandomDate(),
+      dueDate: this.getRandomDate().toUTCString(),
       color: '#' + Math.floor(Math.random() * 16777215).toString(16),
       id: uuid.v4(),
     }
@@ -40,23 +43,21 @@ export class TaskService {
     tasklist.push(randomTask.id)
     localStorage.setItem('tasklist', JSON.stringify(tasklist))
     localStorage.setItem(randomTask.id, JSON.stringify(randomTask))
-    console.log(localStorage)
     this.task.next(randomTask)
   }
 
   //add random date between 01.07.2023 and 01.08.2023
   getRandomDate(): Date {
-    const start = new Date(2023, 6, 1)
-    const end = new Date(2023, 7, 1)
     return new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
+      this.startDate.getTime() +
+        Math.random() * (this.endDate.getTime() - this.startDate.getTime())
     )
   }
 }
 
 export interface RandomTask {
   id: string
-  dueDate: Date
+  dueDate: string
   title: string
   description: string
   priority: number // 1-3

@@ -1,0 +1,32 @@
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.edit-text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.action-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.calender {
+  width: 15rem;
+  height: 22rem;
+  margin-right: 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
