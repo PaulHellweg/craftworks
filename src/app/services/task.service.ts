@@ -35,7 +35,7 @@ export class TaskService {
       title: this.lorem.generateWords(1),
       description: this.lorem.generateSentences(1),
       priority: (count % 3) + 1,
-      dueDate: this.getRandomDate().toUTCString(),
+      dueDate: this.getRandomDate(),
       color: '#' + Math.floor(Math.random() * 16777215).toString(16),
       id: uuid.v4(),
     }
@@ -57,7 +57,7 @@ export class TaskService {
 
 export interface RandomTask {
   id: string
-  dueDate: string
+  dueDate: Date
   title: string
   description: string
   priority: number // 1-3
