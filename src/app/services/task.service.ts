@@ -6,7 +6,7 @@ import * as uuid from 'uuid'
   providedIn: 'root',
 })
 export class TaskService {
-  public task: Subject<RandomTask> = new Subject()
+  public randomTask: Subject<RandomTask> = new Subject()
 
   public startDate: Date = new Date(2023, 6, 1)
   public endDate: Date = new Date(2024, 7, 1)
@@ -22,13 +22,6 @@ export class TaskService {
     },
   })
 
-  //set existing tasks to localStorage
-  setExistingTasks(): void {
-    JSON.parse(localStorage.getItem('randomTasks') || '[]').forEach(
-      (i: RandomTask) => this.task.next(i)
-    )
-  }
-
   //add random task with described criteria to localStorage and to task subject
   addRandomTasks(count: number): void {
     const randomTask: RandomTask = {
@@ -43,8 +36,7 @@ export class TaskService {
     tasklist.push(randomTask.id)
     localStorage.setItem('tasklist', JSON.stringify(tasklist))
     localStorage.setItem(randomTask.id, JSON.stringify(randomTask))
-    this.task.next(randomTask)
-    console.log(tasklist.length)
+    this.randomTask.next(randomTask)
   }
 
   //add random date between 01.07.2023 and 01.08.2023

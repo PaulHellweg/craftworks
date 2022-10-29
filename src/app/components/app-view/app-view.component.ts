@@ -17,11 +17,12 @@ export class AppViewComponent implements OnInit, OnDestroy {
     const tasklist = JSON.parse(localStorage.getItem('tasklist') || '[]')
     for (let i = 0; i < tasklist.length; i++) {
       let task: any = JSON.parse(localStorage.getItem(tasklist[i]) || '{}')
+      task.dueDate = new Date(task.dueDate)
       if (!task.id) continue
       this.randomTasks.push(task)
     }
     this.sink.add(
-      this.taskService.task.subscribe((task) => {
+      this.taskService.randomTask.subscribe((task) => {
         this.randomTasks.push(task)
       })
     )

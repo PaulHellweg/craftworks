@@ -1,3 +1,9 @@
-    <ul *ngFor="let task of randomTasks">
-        <app-task-tile [randomTask]="task"></app-task-tile>
-    </ul>
+<ul *ngFor="let task of (randomTasks | sort).prio1">
+  <app-task-tile [randomTask]="task"></app-task-tile>
+</ul>
+<ul *ngFor="let task of (randomTasks | sort).prio2">
+  <app-task-tile [randomTask]="task"></app-task-tile>
+</ul>
+<ul *ngFor="let task of (randomTasks | sort).prio3">
+  <app-task-tile [randomTask]="task"></app-task-tile>
+</ul>

@@ -17,7 +17,8 @@ import { DatePipe } from '@angular/common'
 import { MatSelectModule } from '@angular/material/select'
 import { MatInputModule } from '@angular/material/input'
 import { FormsModule } from '@angular/forms';
-import { DeleteDialogComponent } from './components/task-tile/utils/delete-dialog/delete-dialog.component'
+import { DeleteDialogComponent } from './components/task-tile/utils/delete-dialog/delete-dialog.component';
+import { SortPipe } from './pipes/sort.pipe'
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DeleteDialogComponent } from './components/task-tile/utils/delete-dialo
     AppViewComponent,
     EditDialogComponent,
     DeleteDialogComponent,
+    SortPipe,
   ],
   imports: [
     BrowserModule,
