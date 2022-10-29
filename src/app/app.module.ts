@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatDialogModule } from '@angular/material/dialog'
-import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component'
+import { EditDialogComponent } from './components/task-tile/utils/edit-dialog/edit-dialog.component'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDatepickerModule } from '@angular/material/datepicker'
@@ -16,7 +16,8 @@ import { MatCardModule } from '@angular/material/card'
 import { DatePipe } from '@angular/common'
 import { MatSelectModule } from '@angular/material/select'
 import { MatInputModule } from '@angular/material/input'
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { DeleteDialogComponent } from './components/task-tile/utils/delete-dialog/delete-dialog.component'
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms'
     TaskTileComponent,
     AppViewComponent,
     EditDialogComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

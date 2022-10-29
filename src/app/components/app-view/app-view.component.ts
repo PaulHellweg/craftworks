@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
+import { SubSink } from 'subsink'
 import { RandomTask, TaskService } from '../../services/task.service'
 
 @Component({
@@ -7,9 +8,9 @@ import { RandomTask, TaskService } from '../../services/task.service'
   templateUrl: './app-view.component.html',
   styleUrls: ['./app-view.component.scss'],
 })
-export class AppViewComponent implements OnInit {
+export class AppViewComponent implements OnInit, OnDestroy {
   public randomTasks: RandomTask[] = []
-
+  private sink = new SubSink()
   constructor(private taskService: TaskService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -19,9 +20,11 @@ export class AppViewComponent implements OnInit {
       if (!task.id) continue
       this.randomTasks.push(task)
     }
-    this.taskService.task.subscribe((task) => {
-      this.randomTasks.push(task)
-    })
+    this.sink.add(
+      this.taskService.task.subscribe((task) => {
+        this.randomTasks.push(task)
+      })
+    )
     this.addRandomTasks(0)
   }
 
@@ -30,5 +33,9 @@ export class AppViewComponent implements OnInit {
     setTimeout(() => {
       this.addRandomTasks(++count)
     }, Math.floor(Math.random() * 20000) + 7000)
+  }
+
+  ngOnDestroy(): void {
+    this.sink.unsubscribe()
   }
 }

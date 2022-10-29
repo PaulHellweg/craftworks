@@ -1,7 +1,7 @@
 <div [ngStyle]="{ 'border-color': randomTask?.color }" class="tile-container">
   <div class="content-container">
     <h1>{{ randomTask?.title?.toUpperCase() }}</h1>
-    <button mat-mini-fab color="primary" (click)="openDialog()">
+    <button mat-mini-fab color="primary" (click)="openEditDialog()">
       <mat-icon>edit</mat-icon>
     </button>
   </div>
@@ -10,4 +10,7 @@
     <p>Due To: {{ randomTask?.dueDate | date }}</p>
     <p>Priority: {{ randomTask?.priority }}</p>
   </div>
+  <button mat-mini-fab color="delete" (click)="openDeleteDialog()">
+    <mat-icon>delete</mat-icon>
+  </button>
 </div>

@@ -44,6 +44,7 @@ export class TaskService {
     localStorage.setItem('tasklist', JSON.stringify(tasklist))
     localStorage.setItem(randomTask.id, JSON.stringify(randomTask))
     this.task.next(randomTask)
+    console.log(tasklist.length)
   }
 
   //add random date between 01.07.2023 and 01.08.2023

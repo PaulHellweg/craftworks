@@ -1,16 +1,11 @@
 <div class="dialog-container">
-  <mat-form-field appearance="fill" class="edit-text">
-    <mat-label>Title</mat-label>
-    <input matInput [(ngModel)]="data.title" />
-  </mat-form-field>
-  <div class="edit-text">
-    <mat-form-field appearance="fill" class="edit-text">
-      <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="data.description" />
-    </mat-form-field>
-  </div>
   <div class="section">
+    <mat-form-field appearance="fill" class="edit-text title">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="data.title" />
+    </mat-form-field>
     <mat-form-field appearance="fill">
+      <mat-label>Priority</mat-label>
       <mat-select [placeholder]="data.priority.toString()">
         <mat-option
           *ngFor="let item of priorityOptiones"
@@ -21,14 +16,22 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-card class="calender">
-      <mat-calendar
-        [minDate]="taskService.startDate"
-        [maxDate]="taskService.endDate"
-        [(selected)]="data.dueDate"
-      ></mat-calendar>
-    </mat-card>
   </div>
+  <div class="edit-text">
+    <mat-form-field appearance="fill" class="edit-text">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="data.description" />
+    </mat-form-field>
+  </div>
+
+  <mat-card class="calender">
+    <mat-calendar
+      [minDate]="taskService.startDate"
+      [maxDate]="taskService.endDate"
+      [(selected)]="data.dueDate"
+    ></mat-calendar>
+  </mat-card>
+
   <div mat-dialog-actions class="action-section">
     <button mat-button (click)="onNoClick()">Cancel</button>
     <button
