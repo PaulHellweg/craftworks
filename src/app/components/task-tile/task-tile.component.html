@@ -1,7 +1,12 @@
-<div [ngStyle]="{ 'border-color': randomTask?.color }" class="tile-container">
+<div class="tile-container">
   <div class="content-container">
     <h1>{{ randomTask?.title?.toUpperCase() }}</h1>
-    <button mat-mini-fab color="primary" (click)="openEditDialog()">
+    <button
+      [ngStyle]="{ 'background-color': randomTask?.color }"
+      mat-mini-fab
+      color="primary"
+      (click)="openEditDialog()"
+    >
       <mat-icon>edit</mat-icon>
     </button>
   </div>
