@@ -23,7 +23,8 @@ import {
   MAT_COLOR_FORMATS,
   NgxMatColorPickerModule,
   NGX_MAT_COLOR_FORMATS,
-} from '@angular-material-components/color-picker'
+} from '@angular-material-components/color-picker';
+import { PriorityPillComponent } from './components/task-tile/utils/priority-pill/priority-pill.component'
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {
     EditDialogComponent,
     DeleteDialogComponent,
     SortPipe,
+    PriorityPillComponent,
   ],
   imports: [
     BrowserModule,

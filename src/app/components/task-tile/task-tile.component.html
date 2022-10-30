@@ -13,7 +13,10 @@
   <p>{{ randomTask?.description }}</p>
   <div class="content-container">
     <p>Due To: {{ randomTask?.dueDate | date }}</p>
-    <p>Priority: {{ randomTask?.priority }}</p>
+    <priority-pill
+      *ngIf="randomTask?.priority"
+      [priority]="randomTask!.priority"
+    ></priority-pill>
   </div>
   <button mat-mini-fab color="delete" (click)="openDeleteDialog()">
     <mat-icon>delete</mat-icon>
