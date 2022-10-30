@@ -2,6 +2,7 @@ import { NgxMatColorPickerInputEvent } from '@angular-material-components/color-
 import { Component, Inject, OnInit } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { RandomTask, TaskService } from '../../../../services/task.service'
+
 interface PriorityOptions {
   value: number
   viewValue: string
