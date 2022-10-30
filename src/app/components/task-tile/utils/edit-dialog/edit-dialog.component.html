@@ -1,4 +1,4 @@
-<div class="dialog-container">
+<div *ngIf="data" class="dialog-container">
   <div class="section">
     <mat-form-field appearance="fill" class="edit-text title">
       <mat-label>Title</mat-label>
@@ -23,14 +23,29 @@
       <input matInput [(ngModel)]="data.description" />
     </mat-form-field>
   </div>
-
-  <mat-card class="calender">
-    <mat-calendar
-      [minDate]="taskService.startDate"
-      [maxDate]="taskService.endDate"
-      [(selected)]="data.dueDate"
-    ></mat-calendar>
-  </mat-card>
+  <div class="section">
+    <mat-card class="calender">
+      <mat-calendar
+        [minDate]="taskService.startDate"
+        [maxDate]="taskService.endDate"
+        [(selected)]="data.dueDate"
+      ></mat-calendar>
+    </mat-card>
+    <mat-form-field>
+      <input
+        matInput
+        [ngxMatColorPicker]="picker"
+        [(ngModel)]="data.color"
+        (colorChange)="setNewColor($event)"
+      />
+      <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+      <ngx-mat-color-picker
+        #picker
+        [touchUi]="true"
+        [color]="'primary'"
+      ></ngx-mat-color-picker>
+    </mat-form-field>
+  </div>
 
   <div mat-dialog-actions class="action-section">
     <button mat-button (click)="onNoClick()">Cancel</button>

@@ -1,3 +1,4 @@
+import { NgxMatColorPickerInputEvent } from '@angular-material-components/color-picker'
 import { Component, Inject, OnInit } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { RandomTask, TaskService } from '../../../../services/task.service'
@@ -11,6 +12,7 @@ interface PriorityOptions {
   styleUrls: ['./edit-dialog.component.scss'],
 })
 export class EditDialogComponent implements OnInit {
+  public loaded = false
   public priorityOptiones: PriorityOptions[] = [
     { value: 1, viewValue: '1' },
     { value: 2, viewValue: '2' },
@@ -37,5 +39,10 @@ export class EditDialogComponent implements OnInit {
   }
   changeTitle(title: string) {
     this.data.title = title
+  }
+  setNewColor($event: NgxMatColorPickerInputEvent) {
+    if ($event.value?.hex) {
+      this.data.color = '#' + $event.value?.toHex()
+    }
   }
 }

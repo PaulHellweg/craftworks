@@ -16,9 +16,14 @@ import { MatCardModule } from '@angular/material/card'
 import { DatePipe } from '@angular/common'
 import { MatSelectModule } from '@angular/material/select'
 import { MatInputModule } from '@angular/material/input'
-import { FormsModule } from '@angular/forms';
-import { DeleteDialogComponent } from './components/task-tile/utils/delete-dialog/delete-dialog.component';
+import { FormsModule } from '@angular/forms'
+import { DeleteDialogComponent } from './components/task-tile/utils/delete-dialog/delete-dialog.component'
 import { SortPipe } from './pipes/sort.pipe'
+import {
+  MAT_COLOR_FORMATS,
+  NgxMatColorPickerModule,
+  NGX_MAT_COLOR_FORMATS,
+} from '@angular-material-components/color-picker'
 
 @NgModule({
   declarations: [
@@ -44,8 +49,9 @@ import { SortPipe } from './pipes/sort.pipe'
     DatePipe,
     MatSelectModule,
     MatInputModule,
+    NgxMatColorPickerModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
