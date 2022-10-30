@@ -1,4 +1,11 @@
-<div class="app-wrapper">
+<div class="app-grid">
+  <div class="grid-header">
+    <h1>Task Manager</h1>
+    <button mat-raised-button color="primary" (click)="openEditDialog()">
+      <mat-icon>add</mat-icon>
+      <span>Add Task</span>
+    </button>
+  </div>
   <div>
     <app-task-tile
       *ngFor="let task of (randomTasks | sort).prio1"

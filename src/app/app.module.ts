@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatDialogModule } from '@angular/material/dialog'
-import { EditDialogComponent } from './components/task-tile/utils/edit-dialog/edit-dialog.component'
+import { EditDialogComponent } from './components/utils/edit-dialog/edit-dialog.component'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDatepickerModule } from '@angular/material/datepicker'
@@ -23,7 +23,7 @@ import {
   MAT_COLOR_FORMATS,
   NgxMatColorPickerModule,
   NGX_MAT_COLOR_FORMATS,
-} from '@angular-material-components/color-picker';
+} from '@angular-material-components/color-picker'
 import { PriorityPillComponent } from './components/task-tile/utils/priority-pill/priority-pill.component'
 
 @NgModule({

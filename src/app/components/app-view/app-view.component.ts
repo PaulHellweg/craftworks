@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { SubSink } from 'subsink'
 import { RandomTask, TaskService } from '../../services/task.service'
+import { EditDialogComponent } from '../utils/edit-dialog/edit-dialog.component'
 
 @Component({
   selector: 'app-app-view',
@@ -37,6 +38,10 @@ export class AppViewComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.addRandomTasks(++count)
     }, Math.floor(Math.random() * 20000) + 7000)
+  }
+
+  openEditDialog() {
+    this.dialog.open(EditDialogComponent, {})
   }
 
   ngOnDestroy(): void {

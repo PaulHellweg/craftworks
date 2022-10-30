@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog'
 import { SubSink } from 'subsink'
 import { RandomTask } from '../../services/task.service'
 import { DeleteDialogComponent } from './utils/delete-dialog/delete-dialog.component'
-import { EditDialogComponent } from './utils/edit-dialog/edit-dialog.component'
+import { EditDialogComponent } from '../utils/edit-dialog/edit-dialog.component'
 
 @Component({
   selector: 'app-task-tile',
