@@ -25,7 +25,11 @@ export class TaskTileComponent implements OnInit, OnDestroy {
       width: '50rem',
       closeOnNavigation: true,
     })
-    this.sink.add(dialofRef.afterClosed().subscribe((result) => {}))
+    this.sink.add(
+      dialofRef.afterClosed().subscribe((result) => {
+        console.log(result)
+      })
+    )
   }
   public openDeleteDialog(): void {
     const dialofRef = this.dialog.open(DeleteDialogComponent, {
