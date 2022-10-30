@@ -6,19 +6,19 @@
       <span>Add Task</span>
     </button>
   </div>
-  <div>
+  <div class="grid-content">
     <app-task-tile
       *ngFor="let task of (randomTasks | sort).prio1"
       [randomTask]="task"
     ></app-task-tile>
   </div>
-  <div>
+  <div class="grid-content">
     <app-task-tile
       *ngFor="let task of (randomTasks | sort).prio2"
       [randomTask]="task"
     ></app-task-tile>
   </div>
-  <div>
+  <div class="grid-content">
     <app-task-tile
       *ngFor="let task of (randomTasks | sort).prio3"
       [randomTask]="task"

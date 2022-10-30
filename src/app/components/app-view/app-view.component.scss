@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 5rem auto;
+  height: 100vh;
 }
 
 .grid-header {
@@ -13,4 +14,11 @@
   align-items: center;
   padding: 1rem;
   background-color: #f5f5f5;
+}
+
+.grid-content {
+  grid-row: 2;
+  padding: 1rem;
+  overflow: scroll;
+  border-top: #f5f5f5;
 }
