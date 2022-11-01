@@ -78,10 +78,6 @@ export class TasksService extends StateService<TaskState> {
     })
   }
 
-  selectTask(task: RandomTask) {
-    this.setState({ selectedtaskId: task.id })
-  }
-
   addRandomTasks(count: number): void {
     let newTask = {
       color: '#' + Math.floor(Math.random() * 16777215).toString(16),
