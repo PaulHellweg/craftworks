@@ -16,6 +16,7 @@ export class AppViewComponent implements OnInit, OnDestroy {
   constructor(public dialog: MatDialog, private tasksService: TasksService) {}
 
   ngOnInit(): void {
+    this.tasksService.addRandomTasks(0)
     this.sink.add(
       this.tasksService.tasks$.subscribe((tasks) => {
         if (tasks.length) {
@@ -23,8 +24,6 @@ export class AppViewComponent implements OnInit, OnDestroy {
           this.randomTasks.forEach((i) => {
             i.dueDate = new Date(i.dueDate)
           })
-        } else {
-          this.tasksService.addRandomTasks(0)
         }
       })
     )

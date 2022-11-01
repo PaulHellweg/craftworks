@@ -14,12 +14,21 @@ interface PriorityOptions {
   styleUrls: ['./edit-dialog.component.scss'],
 })
 export class EditDialogComponent implements OnInit {
-  public loaded = false
   public priorityOptiones: PriorityOptions[] = [
     { value: 1, viewValue: '1' },
     { value: 2, viewValue: '2' },
     { value: 3, viewValue: '3' },
   ]
+
+  private newTask: RandomTask = {
+    title: '',
+    description: '',
+    color: '',
+    priority: 1,
+    dueDate: new Date(),
+    id: uuid.v4(),
+  }
+
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: RandomTask,
@@ -28,14 +37,9 @@ export class EditDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.data) {
-      this.data = {
-        title: '',
-        description: '',
-        color: '',
-        priority: 1,
-        dueDate: new Date(),
-        id: uuid.v4(),
-      }
+      this.data = this.newTask
+    } else {
+      this.newTask = this.data
     }
   }
 
@@ -44,18 +48,18 @@ export class EditDialogComponent implements OnInit {
   }
 
   updateData() {
-    this.tasksService.updateTask(this.data)
+    this.tasksService.updateTask(this.newTask)
   }
 
   changeDescription(description: string) {
-    this.data.description = description
+    this.newTask.description = description
   }
   changeTitle(title: string) {
-    this.data.title = title
+    this.newTask.title = title
   }
   setNewColor($event: NgxMatColorPickerInputEvent) {
     if ($event.value?.hex) {
-      this.data.color = '#' + $event.value?.toHex()
+      this.newTask.color = '#' + $event.value?.toHex()
     }
   }
 }
