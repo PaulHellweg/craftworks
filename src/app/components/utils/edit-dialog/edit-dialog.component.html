@@ -26,8 +26,8 @@
   <div class="section">
     <mat-card class="calender">
       <mat-calendar
-        [minDate]="taskService.startDate"
-        [maxDate]="taskService.endDate"
+        [minDate]="tasksService.startDate"
+        [maxDate]="tasksService.endDate"
         [(selected)]="data.dueDate"
       ></mat-calendar>
     </mat-card>
@@ -54,7 +54,7 @@
       mat-button
       [mat-dialog-close]="data"
       cdkFocusInitial
-      (click)="updateData(data.id)"
+      (click)="updateData()"
     >
       Save
     </button>

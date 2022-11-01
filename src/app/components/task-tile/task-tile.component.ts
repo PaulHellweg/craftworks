@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { SubSink } from 'subsink'
-import { RandomTask } from '../../services/task.service'
 import { DeleteDialogComponent } from './utils/delete-dialog/delete-dialog.component'
 import { EditDialogComponent } from '../utils/edit-dialog/edit-dialog.component'
+import { RandomTask } from '../../services/tasks.service'
 
 @Component({
   selector: 'app-task-tile',
@@ -25,11 +25,7 @@ export class TaskTileComponent implements OnInit, OnDestroy {
       width: '50rem',
       closeOnNavigation: true,
     })
-    this.sink.add(
-      dialofRef.afterClosed().subscribe((result) => {
-        console.log(result)
-      })
-    )
+    this.sink.add(dialofRef.afterClosed().subscribe((result) => {}))
   }
   public openDeleteDialog(): void {
     const dialofRef = this.dialog.open(DeleteDialogComponent, {

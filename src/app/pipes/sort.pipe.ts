@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core'
-import { RandomTask } from '../services/task.service'
+import { RandomTask } from '../services/tasks.service'
 
 interface PrioSortedTask {
   prio1: RandomTask[]
@@ -12,12 +12,13 @@ interface PrioSortedTask {
 })
 export class SortPipe implements PipeTransform {
   transform(list: RandomTask[]): PrioSortedTask {
-    list.sort((a, b) => {
-      return a.dueDate.getTime() - b.dueDate.getTime()
-    })
     let prio1: RandomTask[] = []
     let prio2: RandomTask[] = []
     let prio3: RandomTask[] = []
+
+    list.sort((a, b) => {
+      return a.dueDate.getTime() - b.dueDate.getTime()
+    })
     list.forEach((i) => {
       if (i.priority === 1) {
         prio1.push(i)

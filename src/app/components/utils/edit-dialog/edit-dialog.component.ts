@@ -1,7 +1,8 @@
 import { NgxMatColorPickerInputEvent } from '@angular-material-components/color-picker'
 import { Component, Inject, OnInit } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { RandomTask, TaskService } from '../../../services/task.service'
+import { RandomTask, TasksService } from '../../../services/tasks.service'
+import * as uuid from 'uuid'
 
 interface PriorityOptions {
   value: number
@@ -22,7 +23,7 @@ export class EditDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: RandomTask,
-    public taskService: TaskService
+    public tasksService: TasksService
   ) {}
 
   ngOnInit(): void {
@@ -30,10 +31,10 @@ export class EditDialogComponent implements OnInit {
       this.data = {
         title: '',
         description: '',
-        color: '#000000',
+        color: '',
         priority: 1,
         dueDate: new Date(),
-        id: '',
+        id: uuid.v4(),
       }
     }
   }
@@ -42,8 +43,8 @@ export class EditDialogComponent implements OnInit {
     this.dialogRef.close()
   }
 
-  updateData(id: string) {
-    localStorage.setItem(id, JSON.stringify(this.data))
+  updateData() {
+    this.tasksService.updateTask(this.data)
   }
 
   changeDescription(description: string) {

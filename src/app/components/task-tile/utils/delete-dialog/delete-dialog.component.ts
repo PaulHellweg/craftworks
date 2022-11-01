@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { RandomTask, TaskService } from '../../../../services/task.service'
+import { RandomTask, TasksService } from '../../../../services/tasks.service'
 
 @Component({
   selector: 'app-delete-dialog',
@@ -11,7 +11,7 @@ export class DeleteDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: RandomTask,
-    public taskService: TaskService
+    private tasksService: TasksService
   ) {}
 
   ngOnInit(): void {}
@@ -20,6 +20,6 @@ export class DeleteDialogComponent implements OnInit {
     this.dialogRef.close()
   }
   deleteTask(id: string) {
-    localStorage.removeItem(id)
+    this.tasksService.deleteTask(id)
   }
 }
