@@ -42,10 +42,6 @@ export class TasksService extends StateService<TaskState> {
   public startDate: Date = new Date(2023, 6, 1)
   public endDate: Date = new Date(2024, 7, 1)
 
-  selectedtask$: Observable<RandomTask | undefined> = this.select((state) => {
-    return state.tasks.find((item) => item.id === state.selectedtaskId)
-  })
-
   constructor() {
     super(initialState)
     Object.keys(localStorage).forEach((key) => {
