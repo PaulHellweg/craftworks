@@ -20,12 +20,12 @@ export class EditDialogComponent implements OnInit {
     { value: 3, viewValue: '3' },
   ]
 
-  private newTask: RandomTask = {
+  public task: RandomTask = {
     title: '',
     description: '',
     color: '',
     priority: 1,
-    dueDate: new Date(),
+    dueDate: this.tasksService.startDate,
     id: uuid.v4(),
   }
 
@@ -36,30 +36,33 @@ export class EditDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!this.data) {
-      this.data = this.newTask
-    } else {
-      this.newTask = this.data
+    if (this.data) {
+      this.task = this.data
     }
   }
 
   onNoClick(): void {
-    this.dialogRef.close()
+    this.dialogRef.close(this.task)
   }
 
   updateData() {
-    this.tasksService.updateTask(this.newTask)
+    this.tasksService.updateTask(this.data)
   }
 
   changeDescription(description: string) {
-    this.newTask.description = description
+    this.data.description = description
   }
+
   changeTitle(title: string) {
-    this.newTask.title = title
+    this.data.title = title
   }
+  changeDueDate(dueDate: Date) {
+    this.data.dueDate = dueDate
+  }
+
   setNewColor($event: NgxMatColorPickerInputEvent) {
     if ($event.value?.hex) {
-      this.newTask.color = '#' + $event.value?.toHex()
+      this.data.color = '#' + $event.value?.toHex()
     }
   }
 }

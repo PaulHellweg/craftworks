@@ -1,18 +1,24 @@
-<div *ngIf="data" class="dialog-container">
+<div *ngIf="task" class="dialog-container">
   <div class="section">
     <mat-form-field appearance="fill" class="edit-text title">
       <mat-label>Title</mat-label>
-      <input matInput [(ngModel)]="data.title" />
+      <input
+        matInput
+        ngDefaultControl
+        name="title"
+        [ngModel]="task.title"
+        (ngModelChange)="changeTitle($event)"
+      />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Priority</mat-label>
-      <mat-select [placeholder]="data.priority.toString()">
+      <mat-select [placeholder]="task.priority.toString()">
         <mat-option
-          *ngFor="let item of priorityOptiones"
-          [value]="data.priority"
-          (onSelectionChange)="data.priority = item.value"
+          *ngFor="let option of priorityOptiones"
+          [value]="task.priority"
+          (onSelectionChange)="task.priority = option.value"
         >
-          {{ item.viewValue }}
+          {{ option.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -20,23 +26,34 @@
   <div class="edit-text">
     <mat-form-field appearance="fill" class="edit-text">
       <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="data.description" />
+      <input
+        ngDefaultControl
+        matInput
+        name="description"
+        [ngModel]="task.description"
+        (ngModelChange)="changeDescription($event)"
+      />
     </mat-form-field>
   </div>
   <div class="section">
     <mat-card class="calender">
       <mat-calendar
+        ngDefaultControl
         [minDate]="tasksService.startDate"
         [maxDate]="tasksService.endDate"
-        [(selected)]="data.dueDate"
+        [selected]="task.dueDate"
+        [ngModel]="task.dueDate"
+        (ngModelChange)="changeDueDate($event)"
       ></mat-calendar>
     </mat-card>
     <mat-form-field>
       <mat-label>Color</mat-label>
       <input
         matInput
+        ngDefaultControl
+        name="color"
         [ngxMatColorPicker]="picker"
-        [(ngModel)]="data.color"
+        [(ngModel)]="task.color"
         (colorChange)="setNewColor($event)"
       />
       <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
@@ -52,7 +69,7 @@
     <button mat-button (click)="onNoClick()">Cancel</button>
     <button
       mat-button
-      [mat-dialog-close]="data"
+      [mat-dialog-close]="task"
       cdkFocusInitial
       (click)="updateData()"
     >

@@ -67,6 +67,7 @@ export class TasksService extends StateService<TaskState> {
 
   updateTask(task: RandomTask) {
     localStorage.setItem(task.id, JSON.stringify(task))
+
     this.setState({
       tasks: this.state.tasks.map((item) =>
         item.id === task.id ? { ...item, ...task } : item
