@@ -14,7 +14,7 @@ After I was happy with the basics I started developing the UI, while refactoring
 
 Touching the components over and over gave me time to refactor the logic and and structur of the app.
 
-There is still a lot of headroom to improve functionality wise (pagination, docer). As the state management evolved during progress this might need a major refactor become more consistent an stream based.
+There is still a lot of headroom to improve functionality wise (pagination, docker). I updated the state managenemt to a more robust solution and added a few more features like the ability to add, edit and delete a tasks. I have issues with the edit functionality, I was not able to get it to work properly, I think it has to do with the way I am updating the state.
 
 ## Design
 
